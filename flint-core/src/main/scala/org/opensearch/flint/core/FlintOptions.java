@@ -44,6 +44,10 @@ public class FlintOptions implements Serializable {
 
   public static final String PASSWORD = "auth.password";
 
+  public static final String REPL_USERNAME = "auth.repl_username";
+
+  public static final String REPL_PASSWORD = "auth.repl_password";
+
   public static final String CUSTOM_AWS_CREDENTIALS_PROVIDER = "customAWSCredentialsProvider";
 
   /**
@@ -128,6 +132,14 @@ public class FlintOptions implements Serializable {
 
   public String getPassword() {
     return options.getOrDefault(PASSWORD, "flint");
+  }
+
+  public String getReplUsername() {
+    return options.getOrDefault(REPL_USERNAME, "");
+  }
+
+  public String getReplPassword() {
+    return options.getOrDefault(REPL_PASSWORD, "");
   }
 
   public int getSocketTimeoutMillis() {

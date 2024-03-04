@@ -66,6 +66,16 @@ object FlintSparkConf {
     .doc("basic auth password")
     .createWithDefault("flint")
 
+  val REPL_USERNAME = FlintConfig("spark.datasource.flint.auth.repl_username")
+    .datasourceOption()
+    .doc("basic auth username for repl context")
+    .createWithDefault("")
+
+  val REPL_PASSWORD = FlintConfig("spark.datasource.flint.auth.repl_password")
+    .datasourceOption()
+    .doc("basic auth password for repl context")
+    .createWithDefault("")
+
   val REGION = FlintConfig("spark.datasource.flint.region")
     .datasourceOption()
     .doc("AWS service region")
@@ -219,6 +229,8 @@ case class FlintSparkConf(properties: JMap[String, String]) extends Serializable
       CUSTOM_AWS_CREDENTIALS_PROVIDER,
       USERNAME,
       PASSWORD,
+      REPL_USERNAME,
+      REPL_PASSWORD,
       SOCKET_TIMEOUT_MILLIS,
       JOB_TYPE,
       REPL_INACTIVITY_TIMEOUT_MILLIS)

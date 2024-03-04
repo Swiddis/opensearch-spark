@@ -269,9 +269,16 @@ public class FlintOpenSearchClient implements FlintClient {
       );
     } else if (options.getAuth().equals(FlintOptions.BASIC_AUTH)) {
       CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+      // If repl credentials are provided, use them for any requests to requestsIndex, instead of the default.
+      if (!options.getReplUsername().isEmpty() && !options.getReplPassword().isEmpty()) {
+        LOG.info("Received REPL credentials for '" + options.getReplUsername() + "', using for requests index");
+        credentialsProvider.setCredentials(
+                new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, "query_request_index", AuthScope.ANY_SCHEME),
+                new UsernamePasswordCredentials(options.getReplUsername(), options.getReplPassword()));
+      }
       credentialsProvider.setCredentials(
-          AuthScope.ANY,
-          new UsernamePasswordCredentials(options.getUsername(), options.getPassword()));
+                AuthScope.ANY,
+                new UsernamePasswordCredentials(options.getUsername(), options.getPassword()));
       restClientBuilder.setHttpClientConfigCallback(builder -> {
         HttpAsyncClientBuilder delegate = builder.setDefaultCredentialsProvider(credentialsProvider);
         return RetryableHttpAsyncClient.builder(delegate, options);
