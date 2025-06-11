@@ -19,3 +19,4 @@ This document contains a list of maintainers in this repo. See [opensearch-proje
 | Louis Chu       | [noCharger](https://github.com/noCharger)       | Amazon      |
 | Lantao Jin      | [LantaoJin](https://github.com/LantaoJin)       | Amazon      |
 | Tomoyuki Morita | [ykmr1224](https://github.com/ykmr1224)         | Amazon      |
+| Simeon Widdis   | [Swiddis](https://github.com/Swiddis)           | Amazon      |
