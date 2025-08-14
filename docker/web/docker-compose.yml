@@ -14,7 +14,6 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
       - SPARK_PUBLIC_DNS=localhost
-
   spark-worker:
     build:
       context: ../..

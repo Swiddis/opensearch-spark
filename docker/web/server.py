@@ -15,6 +15,7 @@ def try_get_spark_session():
             return SparkSession.builder \
                        .master("spark://spark:7077") \
                        .appName("API Server") \
+                       .config("spark.driver.extraJavaOptions", "-Dlog4j.configurationFile=log4j2_debug.properties") \
                        .getOrCreate()
         except:
             time.sleep(2)

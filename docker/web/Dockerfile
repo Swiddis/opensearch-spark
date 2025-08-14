@@ -17,6 +17,8 @@ COPY --from=builder /build/ppl-spark-integration/target/scala-2.12/ppl-spark-int
 COPY --from=builder /build/flint-spark-integration/target/scala-2.12/flint-spark-integration-assembly-1.0.0-SNAPSHOT.jar /opt/bitnami/spark/jars/flint-spark-integration.jar
 COPY --from=builder /build/spark-sql-application/target/scala-2.12/sql-job-assembly-1.0.0-SNAPSHOT.jar /opt/bitnami/spark/jars/opensearch-spark-sql-application.jar
 COPY docker/web/spark-defaults.conf /opt/bitnami/spark/conf/spark-defaults.conf
+COPY docker/web/log4j2.properties /opt/bitnami/spark/conf/log4j2.properties
+COPY docker/web/log4j2_debug.properties /opt/bitnami/spark/conf/log4j2_debug.properties
 
 FROM spark AS web
 
